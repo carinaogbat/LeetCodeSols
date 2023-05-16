@@ -1,3 +1,4 @@
+# ADD STRINGS
 class Solution(object):
     def addStrings(self, num1, num2):
         """
@@ -35,4 +36,21 @@ class Solution(object):
                 t_dict[item] = 1
 
         if s_dict == t_dict:
-            return True       
+            return True    
+#NOTES - my solution was faster than 81% of solutions because I used a dictionary
+# rather than looping through or sorting lists. Other (slower) solutions included:
+#--return sorted(s) == sorted(t)
+#--creating a dictionary but sorting through keys
+
+#9 PALINDROME NUMBER
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        x_reversed = str(x)[::-1]
+        return str(x) == x_reversed
+
+#NOTES - to reverse a number you do need to convert it to a string to use slicing,
+#reverse() or sort() and sorted() methods.
