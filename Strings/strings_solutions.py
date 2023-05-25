@@ -84,3 +84,121 @@ class Solution(object):
         """
         words = s.split()
         return len(words[-1])
+
+#other faster solutions
+# import sys
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        s1=s.strip()
+        t=s1.split(' ')
+        return len(t[-1])
+
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        arr = s.strip().split()
+        return len(arr[-1])
+
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        return len(s.split()[-1])
+
+#151 REVERSE WORDS IN A STRING
+# Given an input string s, reverse the order of the words.
+# A word is defined as a sequence of non-space characters. The words in s will be separated by 
+# at least one space.
+# Return a string of the words in reverse order concatenated by a single space.
+# Note that s may contain leading or trailing spaces or multiple spaces between two words. The 
+# returned string should only have a single space separating the words. Do not include any extra
+#  spaces.
+
+#MY SOLUTION - beats 80% time and 20% memory
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        reverse_word_string = ""
+        words = s.strip()
+        words_list = words.split()
+        words_list.reverse()
+        for word in words_list:
+            reverse_word_string += word + " "
+
+        return reverse_word_string.strip()
+
+#OTHER SOLUTIONS
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        l=s.split()
+        l=l[::-1]
+        return ' '.join(l)
+
+class Solution:
+  def reverseWords(self, s):
+    return ' '.join(reversed(s.split()))
+
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return ' '.join(s.split()[::-1])
+
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+
+        
+        words = s.split(" ")
+        o = " ".join(words[::-1])
+        return " ".join(o.split()).strip()
+
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+
+        words = (s.strip()).split()
+
+        for i in range(len(words)/2):
+            words[i], words[len(words)-1-i] = words[len(words)-1-i], words[i]
+        return " ".join(words)
+
+#best memory solution
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        l = []
+        i = 0
+        while i < len(s):
+            if s[i] == " ":
+                i += 1
+                continue
+            else:
+                k = ""
+                while i < len(s) and s[i]!= " ":
+                    k += s[i]
+                    i += 1
+                #print(k)
+                l.append(k)
+        #print(l)
+        return " ".join(l[::-1])
+
