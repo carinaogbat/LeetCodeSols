@@ -2,11 +2,23 @@
 # Given the head of a singly linked list, return the middle node of the linked list.
 # If there are two middle nodes, return the second middle node.
 
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class Solution(object):
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        fast = head
+        slow = head
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            
+        return slow
+            
+
+
 class Solution(object):
     def middleNode(self, head):
         """
@@ -30,6 +42,7 @@ class Solution(object):
 #  There are at least two different characters in letters.
 # Return the smallest character in letters that is lexicographically greater than target. If such a character does
 #  not exist, return the first character in letters.
+
 class Solution(object):
     def nextGreatestLetter(self, letters, target):
         """
