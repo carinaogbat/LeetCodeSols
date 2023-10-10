@@ -15,59 +15,43 @@ class Solution(object):
                 nums.append(num)
 
         return nums
-#NOTES - only beats 16% of solutions
-#Faster Solution:
-# class Solution(object):
-#     def moveZeroes(self, nums):
-#         """
-#         :type nums: List[int]
-#         :rtype: None Do not return anything, modify nums in-place instead.
-#         """
-#         i = 0
-#         j = 0
-#         length = len(nums)
-#         while i + j < length:
-#             if nums[i] == 0:
-#                 item = nums.pop(i)
-#                 nums.append(item)
-#                 j = j + 1
-#             else:
-#                 i = i + 1
+
+
+# 977. Squares of a Sorted Array
+# Given an integer array nums sorted in non-decreasing order, return an array of 
+# the squares of each number sorted in non-decreasing order.
+
+class Solution(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
         
-#         return nums
+        return sorted(num * num for num in nums)
 
-# class Solution(object):
-#     def moveZeroes(self, nums):
-#         """
-#         :type nums: List[int]
-#         :rtype: None Do not return anything, modify nums in-place instead.
-#         """
-#         heap = []
-#         heapify(heap)
-#         for i in range(len(nums)):
-#             if nums[i] == 0:
-#                 heappush(heap, i)
-#             else:
-#                 if len(heap) != 0:
-#                     index = heappop(heap)
-#                     nums[index] = nums[i]
-#                     nums[i] = 0
-#                     heappush(heap,i)
 
-# class Solution(object):
-#     def moveZeroes(self, nums):    
-#         a = nums.count(0)
-#         for x in range(1,a+1):
-#             nums.remove(0)
-#             nums.append(0)
+# 1004. Max Consecutive Ones III
+# Given a binary array nums and an integer k, return the maximum number of consecutive 1's 
+# in the array if you can flip at most k 0's.
 
-# class Solution(object):
-#     def moveZeroes(self, nums):
-#         """
-#         :type nums: List[int]
-#         :rtype: None Do not return anything, modify nums in-place instead.
-#         """
-#         for item in nums:
-#             if item == 0:
-#                 nums += [nums.pop(nums.index(item))]
-#         return nums
+class Solution(object):
+    def longestOnes(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        left = current = ans = 0
+        for right in range(len(nums)):
+                if nums[right] == 0:
+                    current += 1
+                while current > k:
+                    if nums[left] == 0:
+                        current -=1
+                    left += 1
+                
+                ans = max(ans, right - left + 1)
+        
+        return ans
+
